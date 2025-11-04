@@ -49,8 +49,10 @@ dependencies {
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
-	//h2
+	//Database
 	implementation 'com.h2database:h2:2.3.232'
+	implementation 'mysql:mysql-connector-java:8.0.33'
+
 
 }
 

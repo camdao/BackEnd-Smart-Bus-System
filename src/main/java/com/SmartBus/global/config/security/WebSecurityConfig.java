@@ -53,15 +53,7 @@ public class WebSecurityConfig {
         http.authorizeHttpRequests(
                 authorize ->
                         authorize
-                                .requestMatchers("/10mm-actuator/**")
-                                .permitAll()
-                                .requestMatchers("/auth/register")
-                                .authenticated()
-                                .requestMatchers("/auth/**")
-                                .permitAll()
-                                .requestMatchers("/v1/**")
-                                .permitAll()
-                                .requestMatchers("/oauth2/**")
+                                .requestMatchers("/auth/login/**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated());
