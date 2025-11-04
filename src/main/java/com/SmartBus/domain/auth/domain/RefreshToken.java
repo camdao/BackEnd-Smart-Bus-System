@@ -1,14 +1,22 @@
 package com.SmartBus.domain.auth.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
+import lombok.NoArgsConstructor;
 
 
 @Getter
+@Entity
+@NoArgsConstructor(access = lombok.AccessLevel.PROTECTED)
+
 public class RefreshToken {
 
-    @Id private Long memberId;
+    @Id
+    private Long memberId;
     private String token;
     private long ttl;
 
@@ -18,4 +26,12 @@ public class RefreshToken {
         this.token = token;
         this.ttl = ttl;
     }
+    public static RefreshToken createRefreshToken(Long memberId, String token, long ttl) {
+        return RefreshToken.builder()
+                .memberId(memberId)
+                .token(token)
+                .ttl(ttl)
+                .build();
+    }
+
 }
