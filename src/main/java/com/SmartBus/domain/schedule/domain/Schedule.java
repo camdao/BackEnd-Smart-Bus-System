@@ -63,4 +63,13 @@ public class Schedule {
                 .endTime(endTime)
                 .build();
     }
+    public void update(Bus bus, Member driver, Router router,
+                       LocalDate scheduleDate, LocalTime startTime, LocalTime endTime) {
+        this.bus = bus;
+        this.driver = driver;
+        this.router = router;
+        this.scheduleDate = scheduleDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
 }

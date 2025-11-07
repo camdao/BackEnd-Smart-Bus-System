@@ -20,6 +20,8 @@ public enum ErrorCode {
     // Security
     PASSWORD_NOT_MATCHES(HttpStatus.UNAUTHORIZED, "The password does not match."),
 
+    //Schedule
+    SCHEDULE_NOT_FOUND(HttpStatus.NOT_FOUND, "The schedule could not be found."),
     ;
 
     private final HttpStatus status;
