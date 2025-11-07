@@ -37,7 +37,7 @@ public class Member {
         return Member.builder()
                 .username(username)
                 .password(password)
-                .role(MemberRole.USER)
+                .role(MemberRole.ADMIN)
                 .build();
     }
 }

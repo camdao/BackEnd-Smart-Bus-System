@@ -41,4 +41,15 @@ public class AuthService {
         }
     }
 
+    public void registerMember(UsernamePasswordRequest request) {
+        if (memberRepository.findByUsername(request.username()).isPresent()) {
+            throw new RuntimeException("Tên đăng nhập đã tồn tại!");
+        }
+        String encodedPassword = passwordEncoder.encode(request.password());
+
+        Member member = Member.createMember(request.username(), encodedPassword);
+
+        memberRepository.save(member);
+    }
+
 }

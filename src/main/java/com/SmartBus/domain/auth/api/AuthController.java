@@ -30,5 +30,10 @@ public class AuthController {
 
         return ResponseEntity.ok().headers(tokenHeaders).body(response);
     }
+//    @PostMapping("/register")
+//    public ResponseEntity<String> register(@Valid @RequestBody UsernamePasswordRequest request) {
+//        authService.registerMember(request);
+//        return ResponseEntity.ok("Đăng ký thành công!");
+//    }
 
 }

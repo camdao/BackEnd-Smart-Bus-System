@@ -24,7 +24,7 @@ public class CookieUtil {
                         .path("/")
                         .secure(true)
                         .sameSite(sameSite)
-                        .httpOnly(true)
+                        .httpOnly(false)
                         .build();
 
         ResponseCookie refreshTokenCookie =
@@ -32,7 +32,7 @@ public class CookieUtil {
                         .path("/")
                         .secure(true)
                         .sameSite(sameSite)
-                        .httpOnly(true)
+                        .httpOnly(false)
                         .build();
 
         HttpHeaders headers = new HttpHeaders();
@@ -72,6 +72,29 @@ public class CookieUtil {
                         .build();
 
         HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.SET_COOKIE, accessTokenCookie.toString());
+        headers.add(HttpHeaders.SET_COOKIE, refreshTokenCookie.toString());
+
+        return headers;
+    }
+
+    public HttpHeaders clearTokenCookies() {
+        HttpHeaders headers = new HttpHeaders();
+
+        ResponseCookie accessTokenCookie = ResponseCookie.from("accessToken", "")
+                .httpOnly(true)
+                .secure(true)
+                .path("/")
+                .maxAge(0) // Expire immediately
+                .build();
+
+        ResponseCookie refreshTokenCookie = ResponseCookie.from("refreshToken", "")
+                .httpOnly(true)
+                .secure(true)
+                .path("/")
+                .maxAge(0) // Expire immediately
+                .build();
+
         headers.add(HttpHeaders.SET_COOKIE, accessTokenCookie.toString());
         headers.add(HttpHeaders.SET_COOKIE, refreshTokenCookie.toString());
 

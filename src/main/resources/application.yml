@@ -1,14 +1,5 @@
 spring:
-  application:
-    profiles:
-      include:
-        - datasource
-        - security
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  h2:
-    console:
-      enabled: true
+  profiles:
+    include:
+      - datasource
+      - security
