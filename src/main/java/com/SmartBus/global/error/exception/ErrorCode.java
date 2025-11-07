@@ -22,6 +22,9 @@ public enum ErrorCode {
 
     //Schedule
     SCHEDULE_NOT_FOUND(HttpStatus.NOT_FOUND, "The schedule could not be found."),
+
+    //Bus
+    BUS_NOT_FOUND(HttpStatus.NOT_FOUND, "The bus could not be found."),
     ;
 
     private final HttpStatus status;

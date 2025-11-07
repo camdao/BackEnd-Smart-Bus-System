@@ -44,4 +44,11 @@ public class Bus {
                 .status(status)
                 .build();
     }
+
+    public void update(String licensePlate, String model, int capacity, BusStatus status) {
+        this.licensePlate = licensePlate;
+        this.model = model;
+        this.capacity = capacity;
+        this.status = status;
+    }
 }
