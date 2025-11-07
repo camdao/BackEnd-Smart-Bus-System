@@ -43,4 +43,11 @@ public class Router {
                 .distance(distance)
                 .build();
     }
+
+    public void update(String name, String startLocation, String endLocation, double distance) {
+        this.name = name;
+        this.startLocation = startLocation;
+        this.endLocation = endLocation;
+        this.distance = distance;
+    }
 }

@@ -25,6 +25,9 @@ public enum ErrorCode {
 
     //Bus
     BUS_NOT_FOUND(HttpStatus.NOT_FOUND, "The bus could not be found."),
+
+    //Router
+    ROUTER_NOT_FOUND(HttpStatus.NOT_FOUND, "The router could not be found.")
     ;
 
     private final HttpStatus status;
