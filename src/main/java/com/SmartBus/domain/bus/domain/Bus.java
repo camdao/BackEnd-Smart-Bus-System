@@ -30,10 +30,18 @@ public class Bus {
     private BusStatus status;
 
     @Builder
-    public Bus(String licensePlate, String model, int capacity, BusStatus status) {
+    private Bus(String licensePlate, String model, int capacity, BusStatus status) {
         this.licensePlate = licensePlate;
         this.model = model;
         this.capacity = capacity;
         this.status = status;
+    }
+    public static Bus createBus(String licensePlate, String model, int capacity, BusStatus status) {
+        return Bus.builder()
+                .licensePlate(licensePlate)
+                .model(model)
+                .capacity(capacity)
+                .status(status)
+                .build();
     }
 }
