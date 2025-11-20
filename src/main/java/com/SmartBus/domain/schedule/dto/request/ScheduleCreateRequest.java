@@ -10,13 +10,13 @@ import java.time.LocalTime;
 
 public record ScheduleCreateRequest(
         @NotNull(message = "Bus cannot be empty")
-        Bus bus,
+        Long busId,
 
         @NotNull(message = "Driver cannot be empty")
-        Member driver,
+        Long driverId,
 
         @NotNull(message = "Route cannot be empty")
-        Router router,
+        Long routerId,
 
         @NotNull(message = "Schedule date cannot be empty")
         LocalDate scheduleDate,

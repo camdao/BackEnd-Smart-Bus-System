@@ -3,8 +3,8 @@ package com.SmartBus.domain.schedule.api;
 import com.SmartBus.domain.schedule.application.ScheduleService;
 import com.SmartBus.domain.schedule.domain.Schedule;
 import com.SmartBus.domain.schedule.dto.reponse.ScheduleCreateResponse;
+import com.SmartBus.domain.schedule.dto.reponse.ScheduleDetailResponse;
 import com.SmartBus.domain.schedule.dto.reponse.ScheduleFindAllResponse;
-import com.SmartBus.domain.schedule.dto.reponse.ScheduleFindResponse;
 import com.SmartBus.domain.schedule.dto.reponse.ScheduleUpdateResponse;
 import com.SmartBus.domain.schedule.dto.request.ScheduleCreateRequest;
 import com.SmartBus.domain.schedule.dto.request.ScheduleUpdateRequest;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/schedule")
+@RequestMapping("/schedules")
 public class ScheduleController {
 
     private final ScheduleService scheduleService;
@@ -37,8 +37,8 @@ public class ScheduleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ScheduleFindResponse> getScheduleById(@PathVariable Long id) {
-        ScheduleFindResponse schedule =  scheduleService.getScheduleById(id);
+    public ResponseEntity<ScheduleDetailResponse> getScheduleById(@PathVariable Long id) {
+        ScheduleDetailResponse schedule =  scheduleService.getScheduleById(id);
         return ResponseEntity.ok(schedule);
     }
 
