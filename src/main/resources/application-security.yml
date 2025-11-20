@@ -3,4 +3,4 @@ jwt:
   refresh-token-secret: ${JWT_REFRESH_TOKEN_SECRET:my-super-secure-refresh-secret-key-example-654321}
   access-token-expiration-time: ${JWT_ACCESS_TOKEN_EXPIRATION_TIME:7200}
   refresh-token-expiration-time: ${JWT_REFRESH_TOKEN_EXPIRATION_TIME:604800}
-  issuer: ${JWT_ISSUER:}
+  issuer: ${JWT_ISSUER:SmartBus}

@@ -27,8 +27,10 @@ public enum ErrorCode {
     BUS_NOT_FOUND(HttpStatus.NOT_FOUND, "The bus could not be found."),
 
     //Router
-    ROUTER_NOT_FOUND(HttpStatus.NOT_FOUND, "The router could not be found.")
-    ;
+    ROUTER_NOT_FOUND(HttpStatus.NOT_FOUND, "The router could not be found."),
+
+    //Driver
+    INVALID_MEMBER_ROLE(HttpStatus.BAD_REQUEST, "The member does not have the required role.");
 
     private final HttpStatus status;
     private final String message;
