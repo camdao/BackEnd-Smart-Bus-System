@@ -31,15 +31,17 @@ public class ChatController {
     private final MemberRepository memberRepository;
     @MessageMapping("/chat.send")
     public void sendMessage(ChatMessage chatMessage, Principal principal) {
-        Long memberId = Long.parseLong(principal.getName());
+        String receiver = chatMessage.receiverUsername();
 
-        Member member = memberRepository.findById(memberId)
+        Member memberReceiver = memberRepository.findByUsername(receiver)
                 .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
 
-        String receiver = chatMessage.receiverUsername();
+        Member member = memberRepository.findById((long) Integer.parseInt(principal.getName()))
+                .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
+
         Message message = chatService.sendMessage(chatMessage.chatRoomId(), member.getUsername(), chatMessage.content());
-        messagingTemplate.convertAndSendToUser(receiver, "/queue/messages", message);
-        messagingTemplate.convertAndSendToUser(member.getUsername(), "/queue/messages", message);
+        messagingTemplate.convertAndSendToUser(memberReceiver.getId().toString(), "/queue/messages", message);
+//        messagingTemplate.convertAndSendToUser(member.getId().toString(), "/queue/messages", message);
     }
 
    @GetMapping("/history/{chatRoomId}")

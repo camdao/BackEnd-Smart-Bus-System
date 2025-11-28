@@ -10,10 +10,7 @@ import com.SmartBus.domain.router.dao.RouterRepository;
 import com.SmartBus.domain.router.domain.Router;
 import com.SmartBus.domain.schedule.domain.Schedule;
 import com.SmartBus.domain.schedule.dao.ScheduleRepository;
-import com.SmartBus.domain.schedule.dto.reponse.ScheduleCreateResponse;
-import com.SmartBus.domain.schedule.dto.reponse.ScheduleDetailResponse;
-import com.SmartBus.domain.schedule.dto.reponse.ScheduleFindAllResponse;
-import com.SmartBus.domain.schedule.dto.reponse.ScheduleUpdateResponse;
+import com.SmartBus.domain.schedule.dto.reponse.*;
 import com.SmartBus.domain.schedule.dto.request.ScheduleCreateRequest;
 import com.SmartBus.domain.schedule.dto.request.ScheduleUpdateRequest;
 import com.SmartBus.global.error.exception.CustomException;
@@ -23,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -106,5 +105,14 @@ public class ScheduleService {
    }
     public void deleteSchedule(Long id) {
         scheduleRepository.deleteById(id);
+    }
+
+    public List<RouterMapResponse> getRunningSchedules() {
+        LocalDate today = LocalDate.now();
+        LocalTime now = LocalTime.now();
+        List<Schedule>  scheduleList=  scheduleRepository.findRunningSchedules(today, now);
+        return scheduleList.stream()
+                .map(schedule -> RouterMapResponse.from(schedule.getBus(), schedule.getRouter()))
+                .toList();
     }
 }

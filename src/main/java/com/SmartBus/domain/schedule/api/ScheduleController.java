@@ -2,10 +2,7 @@ package com.SmartBus.domain.schedule.api;
 
 import com.SmartBus.domain.schedule.application.ScheduleService;
 import com.SmartBus.domain.schedule.domain.Schedule;
-import com.SmartBus.domain.schedule.dto.reponse.ScheduleCreateResponse;
-import com.SmartBus.domain.schedule.dto.reponse.ScheduleDetailResponse;
-import com.SmartBus.domain.schedule.dto.reponse.ScheduleFindAllResponse;
-import com.SmartBus.domain.schedule.dto.reponse.ScheduleUpdateResponse;
+import com.SmartBus.domain.schedule.dto.reponse.*;
 import com.SmartBus.domain.schedule.dto.request.ScheduleCreateRequest;
 import com.SmartBus.domain.schedule.dto.request.ScheduleUpdateRequest;
 import jakarta.validation.Valid;
@@ -35,7 +32,11 @@ public class ScheduleController {
         List<ScheduleFindAllResponse> schedules = scheduleService.getAllSchedules();
         return ResponseEntity.ok(schedules);
     }
-
+    @GetMapping("/router")
+    public ResponseEntity<List<RouterMapResponse>> getRunningSchedules() {
+        List<RouterMapResponse> schedules = scheduleService.getRunningSchedules();
+        return ResponseEntity.ok(schedules);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<ScheduleDetailResponse> getScheduleById(@PathVariable Long id) {
         ScheduleDetailResponse schedule =  scheduleService.getScheduleById(id);
@@ -56,4 +57,5 @@ public class ScheduleController {
         scheduleService.deleteSchedule(id);
         return ResponseEntity.noContent().build();
     }
+
 }

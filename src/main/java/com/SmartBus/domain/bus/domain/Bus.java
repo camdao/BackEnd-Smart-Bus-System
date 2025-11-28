@@ -29,6 +29,9 @@ public class Bus {
     @Column(name = "status", nullable = false)
     private BusStatus status;
 
+    @Column(name = "location")
+    private String location;
+
     @Builder
     private Bus(String licensePlate, String model, int capacity, BusStatus status) {
         this.licensePlate = licensePlate;

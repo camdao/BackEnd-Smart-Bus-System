@@ -56,7 +56,7 @@ public class WebSecurityConfig {
                                 .requestMatchers("/auth/login/**")
                                 .permitAll()
                                 .anyRequest()
-                                .permitAll());
+                                .authenticated());
         http.exceptionHandling(
                 exception ->
                         exception.authenticationEntryPoint(
